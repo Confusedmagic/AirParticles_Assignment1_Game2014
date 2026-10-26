@@ -1,52 +1,109 @@
-# Prerequisites
-*.d
 
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
+# =========================
+# Unity GitIgnore
+# =========================
 
-# Linker output
-*.ilk
-*.map
-*.exp
+# Unity generated folders
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+[Mm]emoryCaptures/
+[Rr]ecordings/
 
-# Precompiled Headers
-*.gch
-*.pch
+# Unity generated files
+*.unitypackage
+*.tmp
+*.temp
+*.log
+*.bak
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
+# =========================
+# Visual Studio / C#
+# =========================
 
-# Shared objects (inc. Windows DLLs)
+.vs/
+.vscode/
+.idea/
+
+*.csproj
+*.sln
+*.slnx
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+
+# Visual Studio generated folders
+[Dd]ebug/
+[Rr]elease/
+[Bb]in/
+
+# =========================
+# Compiled files
+# =========================
+
 *.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
 *.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
-
-# Debug files
-*.dSYM/
-*.su
-*.idb
 *.pdb
+*.mdb
+*.obj
+*.ilk
+*.cache
 
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
+# =========================
+# Unity / IDE files
+# =========================
+
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+
+# Unity crash reports
+sysinfo.txt
+
+# Unity asset store tools
+[Aa]ssets/AssetStoreTools*
+
+# =========================
+# Operating System
+# =========================
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# =========================
+# Git / Miscellaneous
+# =========================
+
+*.swp
+*.swo
+*~
+*.orig
+
+# =========================
+# KEEP THESE IN GITHUB
+# =========================
+
+# Assets/
+# Packages/
+# ProjectSettings/
+# All C# scripts (.cs)
+# All Unity scenes (.unity)
+# All prefabs (.prefab)
+# All materials (.mat)
+# All .meta files
