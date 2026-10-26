@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2230774957653743379}
   - component: {fileID: 4416564435787793873}
   - component: {fileID: 8385414376232967738}
+  - component: {fileID: 2111499303163502974}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -106,6 +107,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParticlePlayer
   moveSpeed: 12
+  maxHealth: 3
+  healthText: {fileID: 0}
 --- !u!58 &8385414376232967738
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -142,3 +145,19 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.49999997
+--- !u!114 &2111499303163502974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8574743680902550744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f3a762e4b772bf42afa89c367fb8e87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAirPulse
+  pulseRadius: 2.5
+  cooldown: 2
+  enemyPoints: 5
+  pulseEffect: {fileID: 0}
