@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 public class PollutedParticle : MonoBehaviour
@@ -43,9 +42,17 @@ public class PollutedParticle : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player destroyed by polluted air!");
+            // Find the player's health system
+            ParticlePlayer playerScript = other.GetComponent<ParticlePlayer>();
 
-            Destroy(other.gameObject);
+            if (playerScript != null)
+            {
+                // Each polluted particle hit removes 1 HP
+                playerScript.TakeDamage(1);
+
+                // Remove polluted air after it hits the player
+                Destroy(gameObject);
+            }
         }
     }
 }
