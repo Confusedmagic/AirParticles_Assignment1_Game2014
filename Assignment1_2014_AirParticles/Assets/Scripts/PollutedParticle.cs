@@ -8,7 +8,7 @@ public class PollutedParticle : MonoBehaviour
 
     private Transform player;
 
-    void Start() //looks for player tag and saves player locations
+    void Start() // Looks for player tag and saves player location
     {
         GameObject playerObject =
             GameObject.FindGameObjectWithTag("Player");
@@ -43,9 +43,9 @@ public class PollutedParticle : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player hit by polluted particle!");
+            Debug.Log("Player destroyed by polluted air!");
 
-            Destroy(gameObject);
+            Destroy(other.gameObject);
         }
     }
 }
