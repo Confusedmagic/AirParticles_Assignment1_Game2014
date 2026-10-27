@@ -1135,6 +1135,55 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1808443581
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1808443583}
+  - component: {fileID: 1808443582}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1808443582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808443581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54058b7cf5fb0974ca0bdf5b654fe94b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundManager
+  backgroundMusic: {fileID: 8300000, guid: 830fae793093e314c9b8fad17b6a6c7f, type: 3}
+  pulseSound: {fileID: 8300000, guid: 0abd8e11fa708be4aa3023cc6c40ba65, type: 3}
+  hitSound: {fileID: 8300000, guid: 196750d5eb0e7614aa20c7f1aa46a95d, type: 3}
+  pickupSound: {fileID: 8300000, guid: 20ecb91fb45b0244f8de8a719cacd72f, type: 3}
+  redDestroyedSound: {fileID: 8300000, guid: 140c9b2dfc90d564fb222fb3fa74a0d7, type: 3}
+--- !u!4 &1808443583
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808443581}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 829.67346, y: 1323.5847, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1859942456
 GameObject:
   m_ObjectHideFlags: 0
@@ -6165,26 +6214,10 @@ PrefabInstance:
       propertyPath: pulseEffect
       value: 
       objectReference: {fileID: 1859942457}
-    - target: {fileID: 2230774957653743379, guid: ab7b7e320b817e648a952341f5809574, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 7725c49c4d80a0844aff733bc018c57d, type: 3}
     - target: {fileID: 4416564435787793873, guid: ab7b7e320b817e648a952341f5809574, type: 3}
       propertyPath: healthText
       value: 
       objectReference: {fileID: 1029964541}
-    - target: {fileID: 5231268951394051955, guid: ab7b7e320b817e648a952341f5809574, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.97758
-      objectReference: {fileID: 0}
-    - target: {fileID: 5231268951394051955, guid: ab7b7e320b817e648a952341f5809574, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.97758
-      objectReference: {fileID: 0}
-    - target: {fileID: 5231268951394051955, guid: ab7b7e320b817e648a952341f5809574, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.6293
-      objectReference: {fileID: 0}
     - target: {fileID: 5231268951394051955, guid: ab7b7e320b817e648a952341f5809574, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6248,3 +6281,4 @@ SceneRoots:
   - {fileID: 708831349}
   - {fileID: 1859942458}
   - {fileID: 1721922921}
+  - {fileID: 1808443583}

@@ -60,17 +60,14 @@ public class ParticlePlayer : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        // Stop processing damage once the player is dead
         if (currentHealth <= 0)
         {
             return;
         }
 
-        // Reduce health without allowing negative HP
         currentHealth = Mathf.Max(currentHealth - damage, 0);
         UpdateHealthUI();
 
-        // Go to Game Over when no health remains
         if (currentHealth == 0)
         {
             Die();
@@ -79,7 +76,6 @@ public class ParticlePlayer : MonoBehaviour
 
     void UpdateHealthUI()
     {
-        // Update the health display if a UI text has been assigned
         if (healthText != null)
         {
             healthText.text = "HP: " + currentHealth + "/" + maxHealth;
@@ -88,7 +84,6 @@ public class ParticlePlayer : MonoBehaviour
 
     void Die()
     {
-        // Switch to the Game Over screen
         Debug.Log("Player has died!");
         SceneManager.LoadScene("GameOver");
     }

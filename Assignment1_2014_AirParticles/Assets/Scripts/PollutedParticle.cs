@@ -45,12 +45,17 @@ public class PollutedParticle : MonoBehaviour
             // Find the player's health system
             ParticlePlayer playerScript = other.GetComponent<ParticlePlayer>();
 
+            // dmg sound sfx
+            if (SoundManager.Instance != null)
+            {
+                SoundManager.Instance.PlayHit();
+            }
+
+
             if (playerScript != null)
             {
-                // Each polluted particle hit removes 1 HP
                 playerScript.TakeDamage(1);
 
-                // Remove polluted air after it hits the player
                 Destroy(gameObject);
             }
         }

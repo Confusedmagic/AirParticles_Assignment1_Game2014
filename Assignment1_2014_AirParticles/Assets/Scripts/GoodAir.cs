@@ -12,6 +12,13 @@ public class GoodAir : MonoBehaviour
             ScoreManager scoreManager =
                 FindFirstObjectByType<ScoreManager>();
 
+            // collection sfx
+            if (SoundManager.Instance != null)
+            {
+                SoundManager.Instance.PlayPickup();
+            }
+
+
             if (scoreManager != null)
             {
                 scoreManager.AddScore(points);

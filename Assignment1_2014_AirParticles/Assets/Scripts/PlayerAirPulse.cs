@@ -44,6 +44,12 @@ public class PlayerAirPulse : MonoBehaviour
 
         nextAttackTime = Time.time + cooldown;
 
+        // pulse sfx
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.PlayPulse();
+        }
+
         PollutedParticle[] enemies =
             FindObjectsByType<PollutedParticle>(
                 FindObjectsSortMode.None);
@@ -57,6 +63,13 @@ public class PlayerAirPulse : MonoBehaviour
                 transform.position,
                 enemy.transform.position);
 
+            // Plays the enemy destruction sound.
+            if (SoundManager.Instance != null)
+            {
+                SoundManager.Instance.PlayRedDestroyed();
+            }
+
+
             if (distance <= pulseRadius)
             {
                 Destroy(enemy.gameObject);
@@ -68,7 +81,7 @@ public class PlayerAirPulse : MonoBehaviour
             }
         }
 
-        
+
         if (pulseEffect != null)
         {
             StartCoroutine(ShowPulse());
@@ -107,4 +120,6 @@ public class PlayerAirPulse : MonoBehaviour
         pulseEffect.color = originalColor;
         pulseEffect.gameObject.SetActive(false);
     }
+
+
 }
