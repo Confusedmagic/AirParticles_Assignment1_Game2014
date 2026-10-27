@@ -6165,10 +6165,26 @@ PrefabInstance:
       propertyPath: pulseEffect
       value: 
       objectReference: {fileID: 1859942457}
+    - target: {fileID: 2230774957653743379, guid: ab7b7e320b817e648a952341f5809574, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7725c49c4d80a0844aff733bc018c57d, type: 3}
     - target: {fileID: 4416564435787793873, guid: ab7b7e320b817e648a952341f5809574, type: 3}
       propertyPath: healthText
       value: 
       objectReference: {fileID: 1029964541}
+    - target: {fileID: 5231268951394051955, guid: ab7b7e320b817e648a952341f5809574, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.97758
+      objectReference: {fileID: 0}
+    - target: {fileID: 5231268951394051955, guid: ab7b7e320b817e648a952341f5809574, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.97758
+      objectReference: {fileID: 0}
+    - target: {fileID: 5231268951394051955, guid: ab7b7e320b817e648a952341f5809574, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.6293
+      objectReference: {fileID: 0}
     - target: {fileID: 5231268951394051955, guid: ab7b7e320b817e648a952341f5809574, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
