@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScoreManager
   scoreText: {fileID: 847806952}
+  showFinalScore: 0
 --- !u!4 &116939274
 Transform:
   m_ObjectHideFlags: 0
