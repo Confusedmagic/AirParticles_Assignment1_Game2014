@@ -5,19 +5,17 @@ using TMPro;
 
 public class ParticlePlayer : MonoBehaviour
 {
-    // playermovements
     public float moveSpeed = 12f;
 
-    // Player health settings
     public int maxHealth = 3;
     private int currentHealth;
-
-    // Health text shown in the Gameplay UI
     public TMP_Text healthText;
+
+    [Header("Optional: stop moving when FIRE is tapped")]
+    public RectTransform fireButtonArea;
 
     void Start()
     {
-        // Start each game with full health
         currentHealth = maxHealth;
         UpdateHealthUI();
     }
@@ -26,14 +24,11 @@ public class ParticlePlayer : MonoBehaviour
     {
         Vector2 screenPosition;
 
-        // Checks if the player is touching the screen
         if (Touchscreen.current != null &&
             Touchscreen.current.primaryTouch.press.isPressed)
         {
-            screenPosition =
-                Touchscreen.current.primaryTouch.position.ReadValue();
+            screenPosition = Touchscreen.current.primaryTouch.position.ReadValue();
         }
-        // pc testing
         else if (Mouse.current != null &&
                  Mouse.current.leftButton.isPressed)
         {
@@ -44,18 +39,33 @@ public class ParticlePlayer : MonoBehaviour
             return;
         }
 
+        // Do not drag the player over to the mobile FIRE button when tapped.
+        if (fireButtonArea != null)
+        {
+            Canvas canvas = fireButtonArea.GetComponentInParent<Canvas>();
+            Camera uiCamera = canvas != null &&
+                              canvas.renderMode != RenderMode.ScreenSpaceOverlay
+                ? canvas.worldCamera
+                : null;
+
+            if (RectTransformUtility.RectangleContainsScreenPoint(
+                fireButtonArea, screenPosition, uiCamera))
+            {
+                return;
+            }
+        }
+
+        if (Camera.main == null)
+        {
+            return;
+        }
+
         Vector3 target = Camera.main.ScreenToWorldPoint(
             new Vector3(screenPosition.x, screenPosition.y, 10f));
-
-        // had to add this because the z position was being set to 10f, which caused the player to move in the z direction so i just
-        // set it to 0f so the player would only move in the x and y direction
         target.z = 0f;
 
-        // moves the player towards the postion
         transform.position = Vector3.MoveTowards(
-            transform.position,
-            target,
-            moveSpeed * Time.deltaTime);
+            transform.position, target, moveSpeed * Time.deltaTime);
     }
 
     public void TakeDamage(int damage)

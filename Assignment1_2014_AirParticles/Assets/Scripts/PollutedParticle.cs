@@ -6,12 +6,12 @@ public class PollutedParticle : MonoBehaviour
     public float detectionRadius = 6f;
 
     private Transform player;
+    private bool isBeingDestroyed;
+    public bool IsBeingDestroyed => isBeingDestroyed;
 
-    void Start() // Looks for player tag and saves player location
+    void Start()
     {
-        GameObject playerObject =
-            GameObject.FindGameObjectWithTag("Player");
-
+        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
         if (playerObject != null)
         {
             player = playerObject.transform;
@@ -20,44 +20,61 @@ public class PollutedParticle : MonoBehaviour
 
     void Update()
     {
-        if (player == null)
+        if (player == null || isBeingDestroyed)
         {
             return;
         }
 
-        float distance = Vector2.Distance(
-            transform.position,
-            player.position);
-
+        float distance = Vector2.Distance(transform.position, player.position);
         if (distance <= detectionRadius)
         {
             transform.position = Vector2.MoveTowards(
-                transform.position,
-                player.position,
-                moveSpeed * Time.deltaTime);
+                transform.position, player.position, moveSpeed * Time.deltaTime);
         }
+    }
+
+    // Both the existing Clean Air Pulse and new bullets use this method.
+    public void Defeat(int points)
+    {
+        if (isBeingDestroyed)
+        {
+            return;
+        }
+
+        isBeingDestroyed = true;
+
+        ScoreManager scoreManager = FindFirstObjectByType<ScoreManager>();
+        if (scoreManager != null)
+        {
+            scoreManager.AddScore(points);
+        }
+
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.PlayRedDestroyed();
+        }
+
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (isBeingDestroyed || !other.CompareTag("Player"))
         {
-            // Find the player's health system
-            ParticlePlayer playerScript = other.GetComponent<ParticlePlayer>();
+            return;
+        }
 
-            // dmg sound sfx
+        ParticlePlayer playerScript = other.GetComponent<ParticlePlayer>();
+        if (playerScript != null)
+        {
             if (SoundManager.Instance != null)
             {
                 SoundManager.Instance.PlayHit();
             }
 
-
-            if (playerScript != null)
-            {
-                playerScript.TakeDamage(1);
-
-                Destroy(gameObject);
-            }
+            playerScript.TakeDamage(1);
+            isBeingDestroyed = true;
+            Destroy(gameObject);
         }
     }
 }

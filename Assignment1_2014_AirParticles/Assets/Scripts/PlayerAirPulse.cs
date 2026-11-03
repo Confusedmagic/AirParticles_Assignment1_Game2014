@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
@@ -16,7 +15,6 @@ public class PlayerAirPulse : MonoBehaviour
     void Start()
     {
         originalScale = transform.localScale;
-
         if (pulseEffect != null)
         {
             pulseEffect.gameObject.SetActive(false);
@@ -44,43 +42,30 @@ public class PlayerAirPulse : MonoBehaviour
 
         nextAttackTime = Time.time + cooldown;
 
-        // pulse sfx
         if (SoundManager.Instance != null)
         {
             SoundManager.Instance.PlayPulse();
         }
 
-        PollutedParticle[] enemies =
-            FindObjectsByType<PollutedParticle>(
-                FindObjectsSortMode.None);
-
-        ScoreManager scoreManager =
-            FindFirstObjectByType<ScoreManager>();
+        PollutedParticle[] enemies = FindObjectsByType<PollutedParticle>(
+            FindObjectsSortMode.None);
 
         foreach (PollutedParticle enemy in enemies)
         {
-            float distance = Vector2.Distance(
-                transform.position,
-                enemy.transform.position);
-
-            // Plays the enemy destruction sound.
-            if (SoundManager.Instance != null)
+            if (enemy == null || enemy.IsBeingDestroyed)
             {
-                SoundManager.Instance.PlayRedDestroyed();
+                continue;
             }
 
+            float distance = Vector2.Distance(
+                transform.position, enemy.transform.position);
 
             if (distance <= pulseRadius)
             {
-                Destroy(enemy.gameObject);
-
-                if (scoreManager != null)
-                {
-                    scoreManager.AddScore(enemyPoints);
-                }
+                // Centralizes enemy destruction, points and SFX.
+                enemy.Defeat(enemyPoints);
             }
         }
-
 
         if (pulseEffect != null)
         {
@@ -95,31 +80,22 @@ public class PlayerAirPulse : MonoBehaviour
 
         float duration = 0.3f;
         float elapsed = 0f;
-
         Color originalColor = pulseEffect.color;
 
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
-
             float progress = Mathf.Clamp01(elapsed / duration);
-
-            float size = Mathf.Lerp(
-                0.1f, pulseRadius * 2f, progress);
-
-            pulseEffect.transform.localScale =
-                new Vector3(size, size, 1f);
+            float size = Mathf.Lerp(0.1f, pulseRadius * 2f, progress);
+            pulseEffect.transform.localScale = new Vector3(size, size, 1f);
 
             Color color = originalColor;
             color.a = Mathf.Lerp(0.4f, 0f, progress);
             pulseEffect.color = color;
-
             yield return null;
         }
 
         pulseEffect.color = originalColor;
         pulseEffect.gameObject.SetActive(false);
     }
-
-
 }
