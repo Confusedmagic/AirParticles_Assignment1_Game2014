@@ -61,7 +61,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: 2100000, guid: c7d767b9e62391a409466e9e6f70fe06, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -109,6 +109,7 @@ MonoBehaviour:
   moveSpeed: 12
   maxHealth: 3
   healthText: {fileID: 0}
+  fireButtonArea: {fileID: 0}
 --- !u!58 &8385414376232967738
 CircleCollider2D:
   m_ObjectHideFlags: 0
